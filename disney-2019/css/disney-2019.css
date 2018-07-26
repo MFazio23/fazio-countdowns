@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    font-family: 'Lato', sans-serif;
+}
+
+ul {
+    bottom: 0;
+    padding-left: 0;
+}
+
+.tagline {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.container-fluid {
+    margin: 0;
+    height: 100vh;
+}
+
+@media (max-width: 575.98px) {
+    .container-fluid {
+        margin: 0;
+        height: 100%;
+    }
+}
+
+h4 {
+    color: whitesmoke;
+}
+
+#booking-div {
+    height: 50%;
+}
+
+#book-dining-div {
+    background: url("../img/cinderella-royal-table-50pct.png") no-repeat center;
+    background-size: cover;
+    /*color: #555DFE;*/
+}
+
+#book-fastpass-div {
+    background: url("../img/7-dwarfs-mine-train-50pct.png") no-repeat center;
+    background-size: cover;
+    /*color: #481900;*/
+}
+
+#check-in-div {
+    height: 50%;
+    background: url("../img/contemporary-resort-50pct.png") no-repeat center;
+    background-size: cover;
+    /*color: #172548;*/
+}
