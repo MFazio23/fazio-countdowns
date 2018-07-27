@@ -4,7 +4,7 @@ const startTime = DateTime.local(2018, 7, 22, 16, 40);
 const timers = {
     bookDining: {
         divId: 'book-dining-div',
-        endDate: DateTime.local(2018, 7, 27, 0, 0, 0)
+        endDate: DateTime.local(2018, 7, 27, 6, 0, 0)
     },
     bookFastpass: {
         divId: 'book-fastpass-div',
