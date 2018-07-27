@@ -8,7 +8,7 @@ const timers = {
     },
     bookFastpass: {
         divId: 'book-fastpass-div',
-        endDate: DateTime.local(2018, 11, 24, 0, 0, 0)
+        endDate: DateTime.local(2018, 11, 24, 6, 0, 0)
     },
     checkIn: {
         divId: 'check-in-div',
