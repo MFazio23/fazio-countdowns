@@ -22,12 +22,12 @@ ul {
     height: 100vh;
 }
 
-@media (max-width: 575.98px) {
+/*@media (max-width: 575.98px) {
     .container-fluid {
         margin: 0;
         height: 100%;
     }
-}
+}*/
 
 h4 {
     color: whitesmoke;

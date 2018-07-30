@@ -2,10 +2,10 @@ const DateTime = luxon.DateTime;
 const startTime = DateTime.local(2018, 7, 22, 16, 40);
 
 const timers = {
-    bookDining: {
+    /*bookDining: {
         divId: 'book-dining-div',
         endDate: DateTime.local(2018, 7, 27, 6, 0, 0)
-    },
+    },*/
     bookFastpass: {
         divId: 'book-fastpass-div',
         endDate: DateTime.local(2018, 11, 24, 6, 0, 0)
