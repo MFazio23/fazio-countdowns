@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    bottom: 0;
+    padding-left: 0;
+}
+
+.tagline {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.container-fluid {
+    margin: 0;
+    height: 100vh;
+}
+
+@media (max-width: 575.98px) {
+    .container-fluid {
+        margin: 0;
+        height: 100%;
+    }
+}
+
+h4 {
+    color: whitesmoke;
+    padding-top: 10px;
+}
+
+#precon-registration-div {
+    height: 50%;
+}
+
+#precon-div {
+    background: url("../img/tc-2015-stamp-camp.jpg") no-repeat center;
+    background-size: cover;
+    /*color: #555DFE;*/
+}
+
+#registration-div {
+    background: url("../img/tc-2017-registration.jpg") no-repeat center;
+    background-size: cover;
+    /*color: #481900;*/
+}
+
+#tc-div {
+    height: 50%;
+    background: url("../img/tc-2017-kickoff.jpg") no-repeat center;
+    background-size: cover;
+    /*color: #172548;*/
+}
