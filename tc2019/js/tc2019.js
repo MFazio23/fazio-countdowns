@@ -8,11 +8,11 @@ const timers = {
     },
     registration: {
         divId: 'registration-div',
-        endDate: DateTime.local(2018, 8, 4, 18, 0, 0)
+        endDate: DateTime.local(2019, 8, 4, 18, 0, 0)
     },
     tc: {
         divId: 'tc-div',
-        endDate: DateTime.local(2018, 8, 5, 7, 30, 0)
+        endDate: DateTime.local(2019, 8, 5, 7, 30, 0)
     }
 };
 
