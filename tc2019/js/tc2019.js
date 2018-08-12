@@ -1,5 +1,5 @@
 const DateTime = luxon.DateTime;
-const startTime = DateTime.local(2018, 7, 22, 16, 40);
+const startTime = DateTime.local(2018, 8, 8, 17, 30);
 
 const timers = {
     precon: {
