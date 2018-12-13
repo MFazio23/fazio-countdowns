@@ -1,0 +1,6 @@
+cd C:\dev\Code\Fazio\fazio-countdowns\disney-2019
+
+Get-ChildItem img/backgrounds -Recurse -File |
+    Select-Object @{Name="imageName"; Expression={$_.Name}}, @{Name='directoryName'; Expression={$_.Directory.Name }} |
+    ConvertTo-Json |
+    Out-File -FilePath 'images.json'
