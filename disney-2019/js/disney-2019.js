@@ -4,41 +4,69 @@ const startTime = DateTime.local(2018, 7, 22, 16, 40);
 const defaultBarColor = "#E7F7F5";
 const defaultTrackColor = "255, 255, 255";
 
-const images = [
-    {
-        "imageName": "9322026dbcf95e28b6f49b97e5afce46.jpg",
-        "directoryName": "1440x2560"
-    },
-    {
-        "imageName": "fh9z9tbojonz.png",
-        "directoryName": "1440x2560"
-    },
-    {
-        "imageName": "160f9f9f3eff6c613ad2b5f980e4913e.jpg",
-        "directoryName": "1920x1080"
-    },
-    {
-        "imageName": "royal-holiday-hotel-resort-the-rosen-centre-hotel-estados-unidos-florida-orlando.jpg",
-        "directoryName": "1920x1080",
-        "barColor": "#263749",
-        "trackColor": "38, 55, 73"
-    },
-    {
-        "imageName": "videoblocks-monorail-disney-world-park-epcot-orlando-usa_rzncodv0x_thumbnail-full09.png",
-        "directoryName": "1920x1080",
-        "barColor": "#4EFCDB"
-    },
-    {
-        "imageName": "videoblocks-sunny-day-in-walt-disney-world-magic-kingdom-orlando-usa_rztcz-8cg_thumbnail-full11.png",
-        "directoryName": "1920x1080",
-        "barColor": "#294B84",
-        "trackColor": "41, 75, 132"
-    },
-    {
-        "imageName": "walt-disney-world-six-parks-uk-video-loop.jpg",
-        "directoryName": "1920x1080"
-    }
-];
+const images = {
+    portrait: [
+        {
+            "imageName": "9322026dbcf95e28b6f49b97e5afce46.jpg"
+        },
+        {
+            "imageName": "fh9z9tbojonz.png"
+        },
+        {
+            "imageName": "Disneyworld-Castle-1440x2560.jpg",
+            "barColor": "#2E5670",
+            "trackColor": "46, 86, 112"
+        },
+        {
+            "imageName": "wdw-sign.jpg"
+        }
+    ],
+    landscape: [
+        {
+            "imageName": "160f9f9f3eff6c613ad2b5f980e4913e.jpg"
+        },
+        {
+            "imageName": "royal-holiday-hotel-resort-the-rosen-centre-hotel-estados-unidos-florida-orlando.jpg",
+            "barColor": "#263749",
+            "trackColor": "38, 55, 73"
+        },
+        {
+            "imageName": "videoblocks-monorail-disney-world-park-epcot-orlando-usa_rzncodv0x_thumbnail-full09.png",
+            "barColor": "#4EFCDB"
+        },
+        {
+            "imageName": "videoblocks-sunny-day-in-walt-disney-world-magic-kingdom-orlando-usa_rztcz-8cg_thumbnail-full11.png",
+            "barColor": "#294B84",
+            "trackColor": "41, 75, 132"
+        },
+        {
+            "imageName": "walt-disney-world-six-parks-uk-video-loop.jpg"
+        },
+        {
+            "imageName": "disney-hero.jpg",
+            "barColor": "#32454B",
+            "trackColor": "50, 69, 75"
+        },
+        {
+            "imageName": "disney-princesses.jpg",
+            "barColor": "#19449A",
+            "trackColor": "10, 27, 60"
+        },
+        {
+            "imageName": "disney-world-secrets1215.jpg"
+        },
+        {
+            "imageName": "wdw-balloons.jpg",
+            "barColor": "#251968",
+            "trackColor": "37, 25, 104"
+        },
+        {
+            "imageName": "wdw-fireworks.jpg",
+            "barColor": "#03C9EC",
+            "trackColor": "3, 201, 236"
+        }
+    ]
+};
 
 function configureTimers(barColor, trackColor) {
     const timers = {
@@ -96,17 +124,19 @@ function updateChart(divId, chartName, diff, value) {
 
 const $doc = $(document);
 $doc.ready(() => {
-    const validImages = images.filter((image) => image.directoryName === ($doc.width() > $doc.height() ? '1920x1080' : '1440x2560'));
+    const imageType = ($doc.width() > $doc.height() ? "landscape" : "portrait");
 
-    const randomImage = validImages[parseInt(Math.random() * (validImages.length))];
+    const randomImage = images[imageType][parseInt(Math.random() * (images[imageType].length))];
 
-    console.log("Image", randomImage);
-
-    const imagePath = `img/backgrounds/${randomImage.directoryName}/${randomImage.imageName}`;
+    const imagePath = `img/backgrounds/${imageType}/${randomImage.imageName}`;
     $("#check-in-div").css('background-image', `url(${imagePath})`);
 
     $('h4, body').css('color', `rgb(${randomImage.trackColor || defaultTrackColor})`);
 
     configureTimers(randomImage.barColor, randomImage.trackColor);
+
+    $('body').click((e) => {
+        document.location.reload();
+    });
 
 });
