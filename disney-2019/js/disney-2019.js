@@ -14,11 +14,13 @@ const images = {
         },
         {
             "imageName": "Disneyworld-Castle-1440x2560.jpg",
-            "barColor": "#2E5670",
-            "trackColor": "46, 86, 112"
+            "barColor": "#102055",
+            "trackColor": "10, 20, 55"
         },
         {
-            "imageName": "wdw-sign.jpg"
+            "imageName": "wdw-sign.jpg",
+            "barColor": "#C73951",
+            "trackColor": "199, 57, 81"
         }
     ],
     landscape: [
