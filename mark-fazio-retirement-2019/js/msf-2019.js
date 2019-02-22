@@ -13,7 +13,9 @@ const images = {
             "trackColor": "126, 105, 119"
         },
         {
-            "imageName": "hazel-desk-2018.png"
+            "imageName": "hazel-desk-2018.png",
+            "barColor": "#F386A1",
+            "trackColor": "243, 134, 161"
         },
         {
             "imageName": "hazel-papa-desk-2016.png",
@@ -26,7 +28,9 @@ const images = {
     ],
     landscape: [
         {
-            "imageName": "hazel-desk-2018.jpg"
+            "imageName": "hazel-desk-2018.jpg",
+            "barColor": "#F386A1",
+            "trackColor": "243, 134, 161"
         },
         {
             "imageName": "mark-cake-landscape.jpg"
