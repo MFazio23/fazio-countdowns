@@ -23,7 +23,9 @@ const images = {
             "trackColor": "97, 49, 27"
         },
         {
-            "imageName": "papa-grammie-hazel-desk-2018.png"
+            "imageName": "papa-grammie-hazel-desk-2018.png",
+            "barColor": "#4C2866",
+            "trackColor": "76, 40, 102"
         }
     ],
     landscape: [
@@ -36,7 +38,9 @@ const images = {
             "imageName": "mark-cake-landscape.jpg"
         },
         {
-            "imageName": "papa-grammie-hazel-desk-2018.jpg"
+            "imageName": "papa-grammie-hazel-desk-2018.jpg",
+            "barColor": "#4C2866",
+            "trackColor": "76, 40, 102"
         },
         {
             "imageName": "papa-hazel-desk-2016.jpg",
