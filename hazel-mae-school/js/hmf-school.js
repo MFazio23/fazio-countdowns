@@ -1,54 +1,24 @@
 const DateTime = luxon.DateTime;
 const startDateTime = DateTime.local(2019, 1, 1, 0, 0);
-const endDateTime = DateTime.local(2019, 7, 5, 22, 45, 0);
+const endDateTime = DateTime.local(2019, 9, 3, 8, 40, 0);
 
-const defaultBarColor = "#E7F7F5";
-const defaultTrackColor = "255, 255, 255";
+const defaultBarColor = "#3950A2";
+const defaultTrackColor = "57, 80, 162";
 
 const images = {
-    portrait: [
-        {
-            "imageName": "edmond-ok-1986-16x9.png",
-            "barColor": "#7E6977",
-            "trackColor": "126, 105, 119"
-        },
-        {
-            "imageName": "hazel-desk-2018.png",
-            "barColor": "#F386A1",
-            "trackColor": "243, 134, 161"
-        },
-        {
-            "imageName": "hazel-papa-desk-2016.png",
-            "barColor": "#61311B",
-            "trackColor": "97, 49, 27"
-        },
-        {
-            "imageName": "papa-grammie-hazel-desk-2018.png"/*,
-            "barColor": "#4C2866",
-            "trackColor": "76, 40, 102"*/
-        }
-    ],
+
     landscape: [
         {
-            "imageName": "hazel-desk-2018.jpg",
-            "barColor": "#F386A1",
-            "trackColor": "243, 134, 161"
-        },
+            "imageName": "rose-glen-winter.png",
+            "barColor": "#3950A2",
+            "trackColor": "57, 80, 162"
+        }
+    ],
+    portrait: [
         {
-            "imageName": "mark-cake-landscape.jpg"
-        },
-        {
-            "imageName": "papa-grammie-hazel-desk-2018.jpg"/*,
-            "barColor": "#4C2866",
-            "trackColor": "76, 40, 102"*/
-        },
-        {
-            "imageName": "papa-hazel-desk-2016.jpg",
-            "barColor": "#61311B",
-            "trackColor": "97, 49, 27"
-        },
-        {
-            "imageName": "papa-hazel-greenscreen.jpg"
+            "imageName": "rose-glen-logo-bg.png",
+            "barColor": "#3950A2",
+            "trackColor": "57, 80, 162"
         }
     ]
 };
@@ -56,7 +26,7 @@ const images = {
 function configureTimers(barColor, trackColor) {
     const timers = {
         checkIn: {
-            divId: 'retirement-div',
+            divId: 'school-div',
             endDate: endDateTime
         }
     };
@@ -111,10 +81,11 @@ const $doc = $(document);
 $doc.ready(() => {
     const imageType = ($doc.width() > $doc.height() ? "landscape" : "portrait");
 
+    //TODO: Can I just round this instead?
     const randomImage = images[imageType][parseInt(Math.random() * (images[imageType].length))];
 
     const imagePath = `img/backgrounds/${imageType}/${randomImage.imageName}`;
-    $("#retirement-div").css('background-image', `url(${imagePath})`);
+    $("#school-div").css('background-image', `url(${imagePath})`);
 
     $('h4, body').css('color', `rgb(${randomImage.trackColor || defaultTrackColor})`);
 
