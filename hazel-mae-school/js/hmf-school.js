@@ -77,6 +77,14 @@ function updateChart(divId, chartName, diff, value) {
     $('#' + divId + ' .' + chartName + '-value').text(value || 0);
 }
 
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('js/sw.js')
+        .then(function() { console.log("Service Worker Registered"); });
+} else {
+    console.error("This browser doesn't support service workers.")
+}
+
 const $doc = $(document);
 $doc.ready(() => {
     const imageType = ($doc.width() > $doc.height() ? "landscape" : "portrait");
