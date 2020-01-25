@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fazio Disney Trip 2020</title>
+
+    <!-- Images and PWA Metadata go here -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="Fazio Disney Trip 2020">
+    <meta name="application-name" content="Fazio Disney Trip 2020">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#006fae">
+    <!-- End Images and PWA Metadata -->
+
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Mouse+Memoirs&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="../shared/css/easypiechart.css">
+    <link rel="stylesheet" href="../shared/css/countdowns.css">
+    <style>
+        body {
+            font-family: 'Mouse Memoirs', sans-serif;
+        }
+
+        .header-text {
+            font-family: 'Calligraffitti', sans-serif;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 3em;
+        }
+
+        .header-magic {
+            font-family: 'Waltograph', 'Mouse Memoirs', sans-serif;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+
+<div id="countdown-timers"></div>
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="../shared/js/easypiechart.min.js"></script>
+<script src="../shared/js/luxon.min.js"></script>
+<script src="../shared/js/vibrant.min.js"></script>
+<script src="../shared/js/countdown-image-type.js"></script>
+<script src="../shared/js/countdown-page-background.js"></script>
+<script src="../shared/js/countdown-timer.js"></script>
+<script src="../shared/js/countdown-timers.js"></script>
+<script src="../shared/js/countdown-utils.js"></script>
+
+<!--
+<script src="../shared/js/countdown-image-type.js"></script>
+<script src="../shared/js/countdown-page-config.js"></script>
+<script src="../shared/js/countdown-page-background.js"></script>
+-->
+<script>
+    const backgrounds = [
+        new CountdownPageBackground(CountdownImageType.Portrait, '9322026dbcf95e28b6f49b97e5afce46.jpg'),
+        new CountdownPageBackground(CountdownImageType.Portrait, 'fh9z9tbojonz.png'),
+        new CountdownPageBackground(CountdownImageType.Portrait, 'Disneyworld-Castle-1440x2560.jpg'),
+        new CountdownPageBackground(CountdownImageType.Portrait, 'wdw-sign.jpg'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'royal-holiday-hotel-resort-the-rosen-centre-hotel-estados-unidos-florida-orlando.jpg'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'videoblocks-monorail-disney-world-park-epcot-orlando-usa_rzncodv0x_thumbnail-full09.png'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'videoblocks-sunny-day-in-walt-disney-world-magic-kingdom-orlando-usa_rztcz-8cg_thumbnail-full11.png'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'walt-disney-world-six-parks-uk-video-loop.jpg'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'disney-hero.jpg'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'disney-princesses.jpg'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'disney-world-secrets1215.jpg'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'wdw-balloons.jpg'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'wdw-fireworks.jpg')
+    ];
+
+    const startDateTime = DateTime.local(2019, 12, 25, 18, 25, 0);
+
+    const timers = new CountdownTimers(
+        'countdown-timers',
+        `<div><span class="header-text">Countdown to </span><span class="header-magic"> magic</span></div>`,
+        //'Countdown to MAGIC',
+        [
+            new CountdownTimer('dining', 'Book dining reservations in:', startDateTime, DateTime.local(2020, 3, 25, 6, 0, 0)),
+            new CountdownTimer('fastpass', 'Book FastPass+ in:', startDateTime, DateTime.local(2020, 7, 25, 6, 0, 0)),
+            new CountdownTimer('flight', 'Fazio Disney Vacation 2020 starts in:', startDateTime, DateTime.local(2020, 9, 25, 14, 30, 0))
+        ],
+        backgrounds,
+        true
+    );
+
+    timers.init();
+</script>
+
+<!--
+&lt;!&ndash; Countdown-specific code goes here &ndash;&gt;
+<script>
+    const config = new CountdownPageConfig(
+        DateTime.local(2019, 12, 25, 18, 25, 0),
+        DateTime.local(2020, 9, 25, 6, 25, 0),
+        "Fazio Disney Trip 2020"
+    );
+
+    new CountdownTimer(config, backgrounds).init();
+</script>-->
+
+</body>
+</html>

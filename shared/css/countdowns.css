@@ -1,0 +1,75 @@
+html {
+    height: 100%;
+}
+
+@font-face {
+    font-family: Waltograph;
+    src: url("../fonts/waltographUI.ttf");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #333;
+    background-size: cover;
+    font-family: 'Lato', sans-serif;
+}
+
+ul {
+    bottom: 0;
+    padding-left: 0;
+}
+
+@media (max-width: 576px) {
+    .container-fluid {
+        margin: 0;
+        height: 100%;
+    }
+}
+
+#countdown-timers {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 25px;
+    height: 100%;
+
+    background-color: rgba(255, 255, 255, .25);
+}
+
+.countdown-chart-list {
+    margin-bottom: 1em;
+    font-size: 16px;
+}
+
+@media (max-width: 576px) {
+    #countdown-timers {
+        padding: 15% 0 0;
+    }
+
+    .countdown-chart-list {
+        font-size: 12px;
+    }
+
+    .chart {
+        width: 75px;
+        height: 75px;
+        margin: 5px;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+h4 {
+    padding-top: 10px;
+}
+
+span.chart-text {
+    font-size: 1em;
+}
+
+span.chart-value {
+    font-size: 2em;
+}
