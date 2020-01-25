@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fazio Countdown</title>
+
+    <!-- Images and PWA Metadata go here -->
+
+    <!-- End Images and PWA Metadata -->
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="../shared/css/easypiechart.css">
+    <link rel="stylesheet" href="../shared/css/countdowns.css">
+</head>
+<body>
+
+<div id="countdown-div">
+    <h4 id="countdown-timer-header"></h4>
+    <div id="countdown-timer">
+        <ul>
+            <li class="chart" id="days-chart" data-percent="0" data-type="days"><span id="days-value" class="chart-value chart-text">0</span><span class="chart-text">Days</span></li>
+            <li class="chart" id="hours-chart" data-percent="0" data-type="hours"><span id="hours-value" class="chart-value chart-text">0</span><span class="chart-text">Hours</span></li>
+            <li class="chart" id="minutes-chart" data-percent="0" data-type="minutes"><span id="minutes-value" class="chart-value chart-text">0</span><span class="chart-text">Minutes</span></li>
+            <li class="chart" id="seconds-chart" data-percent="0" data-type="seconds"><span id="seconds-value" class="chart-value chart-text">0</span><span class="chart-text">Seconds</span></li>
+        </ul>
+    </div>
+</div>
+
+<script src="../shared/js/easypiechart.min.js"></script>
+<script src="../shared/js/luxon.min.js"></script>
+<script src="../shared/js/countdown-image-type.js"></script>
+<script src="../shared/js/countdown-page-config.js"></script>
+<script src="../shared/js/countdown-page-background.js"></script>
+<script src="../shared/js/countdown-timer.js"></script>
+<script src="../shared/js/countdown-utils.js"></script>
+
+<!-- Countdown-specific code goes here -->
+<script>
+    const config = new CountdownPageConfig(
+        DateTime.local(2019, 12, 25, 18, 25, 0),
+        DateTime.local(2020, 9, 25, 6, 25, 0),
+        "Template"
+    );
+
+    const backgrounds = [
+        //new CountdownPageBackground(CountdownImageType.Landscape, 'royal-holiday-hotel-resort-the-rosen-centre-hotel-estados-unidos-florida-orlando.jpg', '#263749', '#263746', '#A2B')
+    ];
+
+    new CountdownTimer(config, backgrounds).init();
+</script>
+
+</body>
+</html>

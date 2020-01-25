@@ -1,0 +1,44 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #333;
+    font-family: 'Lato', sans-serif;
+}
+
+ul {
+    bottom: 0;
+    padding-left: 0;
+}
+
+.container-fluid {
+    margin: 0;
+    height: 100vh;
+}
+
+@media (max-width: 576px) {
+    .container-fluid {
+        margin: 0;
+        height: 100%;
+    }
+}
+
+#countdown-div {
+    display: none;
+}
+
+h4 {
+    padding-top: 10px;
+}
+
+span.chart-text {
+    font-size: 16px;
+}
+
+span.chart-value {
+    font-size: 2em;
+}
