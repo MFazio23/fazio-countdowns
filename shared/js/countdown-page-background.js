@@ -1,9 +1,11 @@
 class CountdownPageBackground {
-    constructor(imageType, imagePath, barColor = '#E7F7F5', trackColor = '#FFFFFF', textColor = '#DDDDDD') {
+    constructor(imageType, imagePath) {
         this.imageType = imageType;
         this.imagePath = imagePath;
-        this.barColor = barColor;
-        this.trackColor = trackColor;
-        this.textColor = textColor;
+
+        this.barColor = "#000";
+        this.trackColor = "#333";
+        this.textColor = "#FFF";
+        this.titleColor = "#FFF"
     }
 }

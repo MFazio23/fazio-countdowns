@@ -4,6 +4,8 @@ const DateTime = luxon.DateTime;
 // Reload the page when clicked/touched
 document.body.onclick = () => document.location.reload();
 
+const IsMobile = window.matchMedia("(max-width: 576px)").matches;
+
 // Converter for Hex to RGB
 String.prototype.hexToRgb = function() {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(this);
