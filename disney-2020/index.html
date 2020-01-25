@@ -44,6 +44,20 @@
             font-size: 3em;
         }
     </style>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('./sw.js').then(function (registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 </head>
 <body>
 
@@ -62,11 +76,6 @@
 <script src="../shared/js/countdown-timers.js"></script>
 <script src="../shared/js/countdown-utils.js"></script>
 
-<!--
-<script src="../shared/js/countdown-image-type.js"></script>
-<script src="../shared/js/countdown-page-config.js"></script>
-<script src="../shared/js/countdown-page-background.js"></script>
--->
 <script>
     const backgrounds = [
         new CountdownPageBackground(CountdownImageType.Portrait, '9322026dbcf95e28b6f49b97e5afce46.jpg'),
@@ -103,17 +112,6 @@
     timers.init();
 </script>
 
-<!--
-&lt;!&ndash; Countdown-specific code goes here &ndash;&gt;
-<script>
-    const config = new CountdownPageConfig(
-        DateTime.local(2019, 12, 25, 18, 25, 0),
-        DateTime.local(2020, 9, 25, 6, 25, 0),
-        "Fazio Disney Trip 2020"
-    );
-
-    new CountdownTimer(config, backgrounds).init();
-</script>-->
 
 </body>
 </html>
