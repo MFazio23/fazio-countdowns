@@ -18,8 +18,9 @@ class CountdownTimers {
 
     async selectBackground() {
         const imageType = (window.innerWidth > window.innerHeight ? CountdownImageType.Landscape : CountdownImageType.Portrait);
-        const sizedBackgrounds = this.backgrounds.filter((background) => background.imageType === imageType);
-
+        const sizedBackgrounds =
+            this.backgrounds.filter((background) => background.imageType === imageType && (window.navigator.onLine || background.isDefault));
+        
         this.background = sizedBackgrounds[Math.random() * sizedBackgrounds.length >> 0];
 
         const palette = await Vibrant.from(`img/backgrounds/${this.background.imagePath}`).getPalette();
