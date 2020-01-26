@@ -81,3 +81,17 @@ span.chart-text {
 span.chart-value {
     font-size: 2em;
 }
+
+.swatches {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.swatch {
+    height: 100px;
+    width: 100%;
+    font-size: 24px;
+}

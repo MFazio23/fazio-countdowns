@@ -11,7 +11,20 @@ class CountdownTimers {
     async init() {
         await this.selectBackground();
 
-        $(`#${this.id}`).append(this.getHtml());
+        const $div = $(`#${this.id}`);
+
+        $div.append(this.getHtml());
+
+        if(urlParams.has('swatches')) {
+            const palette = await Vibrant.from(`img/backgrounds/${this.background.imagePath}`).getPalette();
+
+            const swatches = Object.keys(palette).map((key) => {
+                const hex = palette[key].hex;
+                return `<div class="swatch" style="background-color: ${hex}">${key}<br /><br />${hex}</div>`
+            });
+
+            $div.append(`<div class="swatches">${swatches.join("\n")}</div>`);
+        }
 
         this.timers.forEach((timer) => timer.init(this.background));
     }
@@ -20,7 +33,7 @@ class CountdownTimers {
         const imageType = (window.innerWidth > window.innerHeight ? CountdownImageType.Landscape : CountdownImageType.Portrait);
         const sizedBackgrounds =
             this.backgrounds.filter((background) => background.imageType === imageType && (window.navigator.onLine || background.isDefault));
-        
+
         this.background = sizedBackgrounds[Math.random() * sizedBackgrounds.length >> 0];
 
         const palette = await Vibrant.from(`img/backgrounds/${this.background.imagePath}`).getPalette();
