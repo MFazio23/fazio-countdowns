@@ -44,11 +44,15 @@ ul {
 
 @media (max-width: 576px) {
     #countdown-timers {
-        padding: 15% 0 0;
+        padding: 10% 0 0;
     }
 
     .countdown-chart-list {
         font-size: 12px;
+    }
+
+    .header {
+        margin-bottom: 15px;
     }
 
     .chart {
@@ -60,6 +64,10 @@ ul {
 
 .hidden {
     display: none;
+}
+
+.header {
+    margin-bottom: 25px;
 }
 
 h4 {
