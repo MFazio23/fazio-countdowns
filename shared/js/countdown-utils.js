@@ -36,3 +36,10 @@ String.prototype.hexToRgbaString = function(a) {
 
     return colors ? `rgba(${colors.r}, ${colors.g}, ${colors.b}, ${colors.a}` : null;
 };
+Object.prototype.mapToObject = function(valFunc, keyFunc) {
+    Object.fromEntries(
+        Object.entries(this).map(
+            ([key, val], ind) => [keyFunc ? keyFunc(val, key, ind) : key, valFunc(val, key, ind)]
+        )
+    )
+};

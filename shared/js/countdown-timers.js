@@ -15,7 +15,7 @@ class CountdownTimers {
 
         $div.append(this.getHtml());
 
-        if(urlParams.has('swatches')) {
+        if(typeof(urlParams) !== "undefined" && urlParams.has('swatches')) {
             const palette = await Vibrant.from(`img/backgrounds/${this.background.imagePath}`).getPalette();
 
             const swatches = Object.keys(palette).map((key) => {

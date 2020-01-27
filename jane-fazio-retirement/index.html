@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Jane Fazio's Retirement</title>
+
+    <!-- Images and PWA Metadata go here -->
+
+    <!-- End Images and PWA Metadata -->
+
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Mouse+Memoirs&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="../shared/css/easypiechart.css">
+    <link rel="stylesheet" href="../shared/css/countdowns.css">
+    <style>
+
+    </style>
+
+    <script>
+
+    </script>
+</head>
+<body>
+
+<div id="countdown-timers"></div>
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="../shared/js/easypiechart.min.js"></script>
+<script src="../shared/js/luxon.min.js"></script>
+<script src="../shared/js/vibrant.min.js"></script>
+<script src="../shared/js/countdown-image-type.js"></script>
+<script src="../shared/js/countdown-page-background.js"></script>
+<script src="../shared/js/countdown-timer.js"></script>
+<script src="../shared/js/countdown-timers.js"></script>
+<script src="../shared/js/countdown-utils.js"></script>
+
+<script>
+    const backgrounds = [
+        new CountdownPageBackground(CountdownImageType.Portrait, 'jane-classroom-number.jpg', true),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'jane-classroom-landscape.jpg', true),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'jane-flowers.jpg'),
+    ];
+
+    const startDateTime = DateTime.local(2019, 8, 26, 8, 0, 0);
+    const lastDayOfSchool = DateTime.local(2020, 6, 9, 15, 35);
+    const startOfRetirementParty = DateTime.local(2020, 6, 13, 13, 0);
+
+    const timers = new CountdownTimers(
+        'countdown-timers',
+        "Jane Fazio's Retirement",
+        [
+            new CountdownTimer('lastDayOfSchool', 'Time Left of School:', startDateTime, lastDayOfSchool),
+            new CountdownTimer('party', 'Time before the Retirement Party:', startDateTime, startOfRetirementParty),
+            new CountdownTimer('mondays', 'Mondays Remaining:', startDateTime, lastDayOfSchool, [TimerType.DayOfWeek], WeekDays.Monday)
+        ],
+        backgrounds
+    );
+
+    timers.init();
+</script>
+
+
+</body>
+</html>

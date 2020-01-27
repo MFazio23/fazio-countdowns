@@ -9,16 +9,15 @@ class CountdownTimer {
         this.refreshInterval = 750;
 
         if (dayOfWeek) {
-            TimerType.DayOfWeek.id = dayOfWeek.toLowerCase();
-            TimerType.DayOfWeek.text = dayOfWeek;
+            TimerType.DayOfWeek.id = dayOfWeek.id;
+            TimerType.DayOfWeek.text = dayOfWeek.text;
         }
 
         this.diffs = {
             days: (startDiff, currentDiff) => 100 - Math.floor(100 * ((startDiff.days - currentDiff.days) / startDiff.days)),
             hours: (startDiff, currentDiff) => 100 - Math.round(100 * ((24 - currentDiff.hours) / 24)),
             minutes: (startDiff, currentDiff) => 100 - Math.round(100 * ((60 - currentDiff.minutes) / 60)),
-            seconds: (startDiff, currentDiff) => 100 - Math.round(100 * ((60 - currentDiff.seconds) / 60)),
-            mondays: (startDiff, currentDiff) => -2 //TODO: Figure this out.
+            seconds: (startDiff, currentDiff) => 100 - Math.round(100 * ((60 - currentDiff.seconds) / 60))
         }
     }
 
@@ -111,5 +110,43 @@ const TimerType = {
     DayOfWeek: {
         id: 'dayOfWeek',
         text: 'Days'
+    }
+};
+
+const WeekDays = {
+    Monday: {
+        id: 'mondays',
+        text: 'Mondays',
+        num: 1
+    },
+    Tuesday: {
+        id: 'tuesdays',
+        text: 'Tuesdays',
+        num: 2
+    },
+    Wednesday: {
+        id: 'wednesdays',
+        text: 'Wednesdays',
+        num: 3
+    },
+    Thursday: {
+        id: 'thursdays',
+        text: 'Thursdays',
+        num: 4
+    },
+    Friday: {
+        id: 'fridays',
+        text: 'Fridays',
+        num: 5
+    },
+    Saturday: {
+        id: 'saturdays',
+        text: 'Saturdays',
+        num: 6
+    },
+    Sunday: {
+        id: 'sundays',
+        text: 'Sundays',
+        num: 7
     }
 };
