@@ -10,7 +10,7 @@
 
     <!-- End Images and PWA Metadata -->
 
-    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Mouse+Memoirs&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Mouse+Memoirs|Roboto+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="../shared/css/easypiechart.css">
     <link rel="stylesheet" href="../shared/css/countdowns.css">
     <style>
-
+        body {
+            font-family: 'Roboto Slab', serif;
+        }
     </style>
 
     <script>
@@ -59,7 +61,11 @@
         [
             new CountdownTimer('lastDayOfSchool', 'Time Left of School:', startDateTime, lastDayOfSchool),
             new CountdownTimer('party', 'Time before the Retirement Party:', startDateTime, startOfRetirementParty),
-            new CountdownTimer('mondays', 'Mondays Remaining:', startDateTime, lastDayOfSchool, [TimerType.DayOfWeek], WeekDays.Monday)
+            new CountdownTimer(
+                'mondays', 'Mondays Remaining:', startDateTime, lastDayOfSchool, [TimerType.DayOfWeek], WeekDays.Sunday,
+                DateTime.local().set({ hour: 8, minute: 15, second: 0, millisecond: 0 }),
+                DateTime.local().set({ hour: 15, minute: 35, second: 0, millisecond: 0 })
+            )
         ],
         backgrounds
     );

@@ -1,5 +1,7 @@
 class CountdownTimer {
-    constructor(id, title, startDate, endDate, timers = [TimerType.Days, TimerType.Hours, TimerType.Minutes, TimerType.Seconds], dayOfWeek = null) {
+    constructor(id, title, startDate, endDate,
+                timers = [TimerType.Days, TimerType.Hours, TimerType.Minutes, TimerType.Seconds],
+                dayOfWeek = null, startOfDay = null, endOfDay = null) {
         this.id = id;
         this.title = title;
         this.startDate = startDate;
@@ -11,6 +13,8 @@ class CountdownTimer {
         if (dayOfWeek) {
             TimerType.DayOfWeek.id = dayOfWeek.id;
             TimerType.DayOfWeek.text = dayOfWeek.text;
+            TimerType.DayOfWeek.startOfDay = startOfDay || DateTime.local().startOf('day');
+            TimerType.DayOfWeek.endOfDay = endOfDay || DateTime.local().endOf('day');
         }
 
         this.diffs = {
@@ -18,7 +22,7 @@ class CountdownTimer {
             hours: (startDiff, currentDiff) => 100 - Math.round(100 * ((24 - currentDiff.hours) / 24)),
             minutes: (startDiff, currentDiff) => 100 - Math.round(100 * ((60 - currentDiff.minutes) / 60)),
             seconds: (startDiff, currentDiff) => 100 - Math.round(100 * ((60 - currentDiff.seconds) / 60))
-        }
+        };
     }
 
     init(selectedBackground) {
@@ -41,7 +45,7 @@ class CountdownTimer {
 
         this.timers.forEach((timerType) => {
             timersHtml += `
-            <li class="chart ${timerType.id}-chart" data-percent="0" data-type="${timerType.id}">
+            <li class="chart ${timerType.id}-chart" data-type="${timerType.id}">
                 <span id="${timerType.id}-value chart-value">0</span><span class="chart-text">${timerType.text}</span>
             </li>
         `
@@ -69,19 +73,28 @@ class CountdownTimer {
         });
 
         setInterval(() => {
-            const startDiff = this.endDate.diff(this.startDate, ['days']).toObject();
+            const startDiff = this.endDate.diff(this.startDate, ['weeks', 'days']).toObject();
             const currentDiff = this.endDate.diffNow(['days', 'hours', 'minutes', 'seconds']).toObject();
 
             for (let chart of charts) {
+                let value = 0;
+                let diffPct = 0;
                 const chartType = chart.el.dataset.type;
+                const diffFunc = this.diffs[chartType];
 
-                const diff = this.diffs[chartType](startDiff, currentDiff);
-                let value = Math.round(currentDiff[chartType]);
-                if(isNaN(value)) value = 0;
+                if (diffFunc) {
+                    diffPct = diffFunc(startDiff, currentDiff);
+                    value = Math.round(currentDiff[chartType]);
+                    if (isNaN(value)) value = 0;
+                } else {
+                    const weekdayCount = getWeekdayCount(this.startDate, this.endDate, TimerType.DayOfWeek.id);
 
-                chart.update(diff);
+                    value = weekdayCount;
+                    diffPct = 100 - Math.round(100 * (weekdayCount / startDiff.weeks));
+                }
+
+                chart.update(diffPct);
                 chart.el.firstElementChild.innerText = value;
-
             }
 
         }, this.refreshInterval);
@@ -89,6 +102,33 @@ class CountdownTimer {
         document.getElementById(`${this.id}-countdown-div`).classList.remove('hidden');
     }
 }
+
+const getWeekdayCount = (startDate, endDate, weekDayId) => {
+    const weekDay = Object.values(WeekDays).filter(wd => wd.id === weekDayId)[0];
+
+    let currentDate = DateTime.local();
+    let dateCount = 0;
+    let weeksRemaining = 0;
+
+    //TODO: Handle counting down that day, maybe.
+    /*if (currentDate.weekday === weekDay.num &&
+        luxon.Interval.fromDateTimes(TimerType.DayOfWeek.startOfDay, TimerType.DayOfWeek.endOfDay).contains(currentDate)) {
+        const daySeconds = TimerType.DayOfWeek.endOfDay.diff(TimerType.DayOfWeek.startOfDay, 'seconds').seconds;
+        const currentSeconds = TimerType.DayOfWeek.endOfDay.diff(currentDate, 'seconds').seconds;
+
+        weeksRemaining = (endDate.diff(currentDate, ['weeks']).weeks + (currentSeconds / daySeconds)).toPrecision(3);
+
+    } else {*/
+        while (currentDate.weekday !== weekDay.num && dateCount <= 7) {
+            currentDate = currentDate.plus({days: 1});
+            dateCount++;
+        }
+
+        weeksRemaining = Math.ceil(endDate.diff(currentDate, ['weeks']).weeks);
+    //}
+
+    return weeksRemaining;
+};
 
 const TimerType = {
     Days: {

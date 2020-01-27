@@ -7,7 +7,7 @@ document.body.onclick = () => document.location.reload();
 const IsMobile = window.matchMedia("(max-width: 576px)").matches;
 
 // Converter for Hex to RGB
-String.prototype.hexToRgb = function() {
+String.prototype.hexToRgb = function () {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(this);
     return result ? {
         r: parseInt(result[1], 16),
@@ -16,7 +16,7 @@ String.prototype.hexToRgb = function() {
     } : null;
 };
 
-String.prototype.hexToRgba = function(a) {
+String.prototype.hexToRgba = function (a) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(this);
     return result ? {
         r: parseInt(result[1], 16),
@@ -25,7 +25,8 @@ String.prototype.hexToRgba = function(a) {
         a
     } : null;
 };
-String.prototype.hexToRgbaString = function(a) {
+
+String.prototype.hexToRgbaString = function (a) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(this);
     const colors = result ? {
         r: parseInt(result[1], 16),
@@ -36,8 +37,9 @@ String.prototype.hexToRgbaString = function(a) {
 
     return colors ? `rgba(${colors.r}, ${colors.g}, ${colors.b}, ${colors.a}` : null;
 };
-Object.prototype.mapToObject = function(valFunc, keyFunc) {
-    Object.fromEntries(
+
+Object.prototype.mapToObject = function (valFunc, keyFunc) {
+    return Object.fromEntries(
         Object.entries(this).map(
             ([key, val], ind) => [keyFunc ? keyFunc(val, key, ind) : key, valFunc(val, key, ind)]
         )
