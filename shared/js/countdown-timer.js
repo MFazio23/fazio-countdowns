@@ -9,6 +9,7 @@ class CountdownTimer {
         this.timers = timers;
 
         this.refreshInterval = 750;
+        this.overrideWithWhiteText = false;
 
         if (dayOfWeek) {
             TimerType.DayOfWeek.id = dayOfWeek.id;
@@ -59,7 +60,7 @@ class CountdownTimer {
     initializeCharts() {
         const charts = Array.from(document.querySelectorAll(`#${this.id}-countdown-timer ul li.chart`), (chartElement) => {
             chartElement.firstElementChild.innerText = '0';
-            chartElement.style.color = this.background.textColor;
+            chartElement.style.color = this.overrideWithWhiteText ? "#FFF" : this.background.textColor;
 
             return new EasyPieChart(chartElement, {
                 scaleColor: false,
@@ -100,6 +101,11 @@ class CountdownTimer {
         }, this.refreshInterval);
 
         document.getElementById(`${this.id}-countdown-div`).classList.remove('hidden');
+    }
+
+    withWhiteText() {
+        this.overrideWithWhiteText = true;
+        return this;
     }
 }
 

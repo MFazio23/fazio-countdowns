@@ -49,6 +49,7 @@
         new CountdownPageBackground(CountdownImageType.Portrait, 'jane-classroom-number.jpg', true),
         new CountdownPageBackground(CountdownImageType.Landscape, 'jane-classroom-landscape.jpg', true),
         new CountdownPageBackground(CountdownImageType.Landscape, 'jane-flowers.jpg'),
+        new CountdownPageBackground(CountdownImageType.Landscape, 'wmsbuilding.jpg'),
     ];
 
     const startDateTime = DateTime.local(2019, 8, 26, 8, 0, 0);
@@ -62,10 +63,10 @@
             new CountdownTimer('lastDayOfSchool', 'Time Left of School:', startDateTime, lastDayOfSchool),
             new CountdownTimer('party', 'Time before the Retirement Party:', startDateTime, startOfRetirementParty),
             new CountdownTimer(
-                'mondays', 'Mondays Remaining:', startDateTime, lastDayOfSchool, [TimerType.DayOfWeek], WeekDays.Sunday,
+                'mondays', 'Mondays Remaining:', startDateTime, lastDayOfSchool, [TimerType.DayOfWeek], WeekDays.Monday,
                 DateTime.local().set({ hour: 8, minute: 15, second: 0, millisecond: 0 }),
                 DateTime.local().set({ hour: 15, minute: 35, second: 0, millisecond: 0 })
-            )
+            ).withWhiteText()
         ],
         backgrounds
     );
